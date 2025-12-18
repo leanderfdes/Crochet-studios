@@ -3,6 +3,7 @@ import About from "@/components/about/About";
 import Collections from "@/components/collections/Collections";
 import RecentOrders from "@/components/recent-orders/RecentOrders";
 import WhatsAppCTA from "@/components/contact/WhatsAppCTA";
+import FloatingWhatsApp from "@/components/contact/FloatingWhatsApp";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Collections />
       <RecentOrders />
       <WhatsAppCTA />
+      <FloatingWhatsApp />
     </>
   );
 }
