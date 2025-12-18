@@ -21,29 +21,40 @@ export default function AboutClient({
   const linesRef = useRef<HTMLDivElement[]>([]);
 
   useEffect(() => {
-    linesRef.current.forEach((el) => {
-      gsap.fromTo(
-        el,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%"
-          }
+  linesRef.current.forEach((el) => {
+    if (!el) return;
+
+    gsap.fromTo(
+      el,
+      {
+        opacity: 0,
+        y: 28
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 85%",
+          toggleActions: "play none none reverse"
         }
-      );
-    });
+      }
+    );
+  });
+
+  return () => {
+    ScrollTrigger.getAll().forEach(t => t.kill());
+  };
   }, []);
+
 
   return (
     <section className="py-32 bg-cream px-6">
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        
-        {/* Text */}
+
+        {/* TEXT */}
         <div>
           <h2 className="font-serif text-4xl mb-8">
             {title}
@@ -63,9 +74,9 @@ export default function AboutClient({
           </div>
         </div>
 
-        {/* Image */}
+        {/* IMAGE */}
         {image && (
-          <div className="rounded-xl overflow-hidden shadow-lg">
+          <div className="rounded-xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.08)]">
             <img
               src={image}
               alt={title}
