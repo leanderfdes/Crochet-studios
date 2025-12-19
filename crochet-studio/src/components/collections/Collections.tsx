@@ -1,14 +1,28 @@
 import { sanity } from "@/lib/sanity.client";
+import {
+  collectionsQuery,
+  siteSettingsQuery
+} from "@/lib/sanity.queries";
 import CollectionsClient from "./CollectionsClient";
 
 export default async function Collections() {
-  const collections = await sanity.fetch(`
-    *[_type=="collection" && visible==true] | order(order asc){
-      _id,
-      title,
-      "image": image.asset->url
-    }
-  `);
+  const [collections, settings] = await Promise.all([
+    sanity.fetch(collectionsQuery),
+    sanity.fetch(siteSettingsQuery)
+  ]);
 
-  return <CollectionsClient collections={collections} />;
+  const whatsappNumber =
+    settings?.whatsappNumber ||
+    process.env.NEXT_PUBLIC_WHATSAPP_FALLBACK;
+
+  if (!collections || collections.length === 0) {
+    return null;
+  }
+
+  return (
+    <CollectionsClient
+      collections={collections}
+      whatsappNumber={whatsappNumber}
+    />
+  );
 }

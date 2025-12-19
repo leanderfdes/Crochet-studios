@@ -1,49 +1,45 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import { fadeUp } from "@/animations/scroll";
-
-type Collection = {
-  _id: string;
-  title: string;
-  image: string;
-};
+import { useState } from "react";
+import ProductModal from "./ProductModal";
 
 export default function CollectionsClient({
-  collections
+  collections,
+  whatsappNumber
 }: {
-  collections: Collection[];
+  collections: any[];
+  whatsappNumber: string;
 }) {
-  const refs = useRef<HTMLDivElement[]>([]);
-
-  useEffect(() => {
-    refs.current.forEach(el => {
-      if (el) fadeUp(el);
-    });
-  }, []);
+  const [activeProduct, setActiveProduct] = useState<any | null>(null);
 
   return (
-    <section className="bg-beige py-24 px-6">
-      <div className="grid md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-        {collections.map((item, index) => (
+    <section className="py-32 bg-beige px-6">
+      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {collections.map((item) => (
           <div
             key={item._id}
-            ref={el => {
-              if (el) refs.current[index] = el;
-            }}
-            className="bg-cream rounded-xl overflow-hidden shadow-md"
+            onClick={() => setActiveProduct(item)}
+            className="cursor-pointer rounded-xl overflow-hidden shadow hover:scale-[1.02] transition"
           >
             <img
-              src={item.image}
+              src={item.images?.[0]}
               alt={item.title}
-              className="h-80 w-full object-cover"
+              className="h-72 w-full object-cover"
             />
-            <div className="p-6 font-serif text-xl">
+            <div className="p-4 font-serif text-lg">
               {item.title}
             </div>
           </div>
         ))}
       </div>
+
+      {activeProduct && (
+        <ProductModal
+          product={activeProduct}
+          whatsappNumber={whatsappNumber}
+          onClose={() => setActiveProduct(null)}
+        />
+      )}
     </section>
   );
 }

@@ -15,3 +15,14 @@ export const aboutSectionQuery = `
     "image": image.asset->url
   }
 `;
+
+export const collectionsQuery = `
+  *[_type=="collection" && visible==true] | order(order asc){
+    _id,
+    title,
+    category,
+    description,
+    customNote,
+    "images": images[].asset->url
+  }
+`;
