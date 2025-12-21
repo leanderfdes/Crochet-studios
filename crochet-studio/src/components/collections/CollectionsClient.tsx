@@ -46,7 +46,7 @@ export default function CollectionsClient({
               if (el) cardsRef.current[i] = el;
             }}
             onClick={() => setActiveProduct(item)}
-            className="cursor-pointer rounded-xl overflow-hidden shadow transition"
+            className="group cursor-pointer rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-out"
           >
             <img
               src={item.images?.[0]}
