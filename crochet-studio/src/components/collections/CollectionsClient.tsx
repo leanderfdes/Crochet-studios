@@ -38,6 +38,16 @@ export default function CollectionsClient({
 
   return (
     <section className="py-32 bg-beige px-6">
+      {/* Section Heading */}
+    <div className="max-w-6xl mx-auto mb-16 text-center">
+      <h2 className="font-serif text-4xl mb-4">
+        Our Creations
+      </h2>
+      <p className="text-sage max-w-xl mx-auto">
+        A selection of handcrafted pieces, thoughtfully made and carefully finished.
+      </p>
+    </div>
+    {/* Collections Grid */}
       <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {collections.map((item, i) => (
           <div
@@ -51,7 +61,7 @@ export default function CollectionsClient({
             <img
               src={item.images?.[0]}
               alt={item.title}
-              className="h-72 w-full object-cover"
+              className="h-72 w-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <div className="p-4 font-serif text-lg">
               {item.title}
