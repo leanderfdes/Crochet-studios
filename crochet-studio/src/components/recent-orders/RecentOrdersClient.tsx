@@ -1,10 +1,47 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function RecentOrdersClient({
   orders
 }: {
   orders: any[];
 }) {
+  const itemsRef = useRef<HTMLDivElement[]>([]);
+
+  useEffect(() => {
+    itemsRef.current.forEach((el, i) => {
+      if (!el) return;
+
+      gsap.fromTo(
+        el,
+        {
+          opacity: 0,
+          x: i % 2 === 0 ? -40 : 40
+        },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            once: true
+          }
+        }
+      );
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
+
   return (
     <section className="py-32 bg-cream px-6">
       <div className="max-w-6xl mx-auto">
@@ -24,6 +61,9 @@ export default function RecentOrdersClient({
           {orders.map((order, i) => (
             <div
               key={order._id}
+              ref={(el) => {
+                if (el) itemsRef.current[i] = el;
+              }}
               className={`flex flex-col md:flex-row items-center gap-12 ${
                 i % 2 === 0 ? "" : "md:flex-row-reverse"
               }`}
@@ -33,13 +73,18 @@ export default function RecentOrdersClient({
                 <img
                   src={order.image}
                   alt={order.caption}
-                  className="rounded-xl shadow-md w-full object-cover"
+                  className="
+                    rounded-xl shadow-sm
+                    hover:shadow-xl
+                    transition-shadow duration-300
+                    w-full object-cover
+                  "
                 />
               </div>
 
               {/* Content */}
               <div className="w-full md:w-1/2">
-                <p className="font-serif text-xl mb-2">
+                <p className="font-serif text-xl mb-2 leading-snug">
                   {order.caption}
                 </p>
                 {order.location && (
