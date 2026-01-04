@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Image from "next/image";
+import { urlFor } from "@/lib/sanity.image";
 import ProductModal from "./ProductModal";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -58,9 +60,12 @@ export default function CollectionsClient({
             onClick={() => setActiveProduct(item)}
             className="group cursor-pointer rounded-xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 ease-out"
           >
-            <img
-              src={item.images?.[0]}
+            <Image
+              src={urlFor(item.images?.[0]).width(600).height(600).quality(80).url()}
               alt={item.title}
+              width={600}
+              height={600}
+              sizes="(max-width: 768px) 100vw, 33vw"
               className="h-72 w-full object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <div className="p-4 font-serif text-lg">
