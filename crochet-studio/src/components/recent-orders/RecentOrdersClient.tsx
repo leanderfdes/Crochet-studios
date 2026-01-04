@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Image from "next/image";
+import { urlFor } from "@/lib/sanity.image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,9 +72,12 @@ export default function RecentOrdersClient({
             >
               {/* Image */}
               <div className="w-full md:w-1/2">
-                <img
-                  src={order.image}
+                <Image
+                  src={urlFor(order.image).width(800).height(600).quality(80).url()}
                   alt={order.caption}
+                  width={800}
+                  height={600}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="
                     rounded-xl shadow-sm
                     hover:shadow-xl
