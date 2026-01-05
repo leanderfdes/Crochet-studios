@@ -1,9 +1,35 @@
-import "./globals.css";
+import type { Metadata } from "next";
+import { sanity } from "@/lib/sanity.client";
+import { siteSettingsQuery } from "@/lib/sanity.queries";
+import { urlFor } from "@/lib/sanity.image";
 
-export const metadata = {
-  title: "Threaded Grace",
-  description: "Handcrafted crochet studio"
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await sanity.fetch(siteSettingsQuery);
+
+  const title =
+    settings?.seoTitle || "Riddhi’s Creation";
+  const description =
+    settings?.seoDescription ||
+    "Handcrafted crochet creations made with care and intention.";
+
+  const ogImage = settings?.seoImage
+    ? urlFor(settings.seoImage)
+        .width(1200)
+        .height(630)
+        .quality(80)
+        .url()
+    : undefined;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: ogImage ? [ogImage] : []
+    }
+  };
+}
 
 export default function RootLayout({
   children
