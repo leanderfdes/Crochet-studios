@@ -2,6 +2,7 @@ export default {
   name: "aboutSection",
   title: "About Section",
   type: "document",
+  __experimental_actions: ["update", "publish"], // ⛔ prevents delete & create
   fields: [
     {
       name: "title",

@@ -2,14 +2,43 @@ export default {
   name: "collection",
   title: "Collections",
   type: "document",
+
   fields: [
+    /* =========================
+       BASIC INFO
+    ========================= */
+
     {
       name: "title",
+      title: "Title",
       type: "string",
       validation: (R: any) => R.required()
     },
 
-    // 👇 NEW (gallery support)
+    /* =========================
+       CATEGORY (NEW)
+    ========================= */
+
+    {
+      name: "category",
+      title: "Category",
+      type: "string",
+      options: {
+        list: [
+          { title: "Bags", value: "bags" },
+          { title: "Clothing", value: "clothing" },
+          { title: "Home Décor", value: "homeDecor" },
+          { title: "Custom Orders", value: "customOrders" }
+        ],
+        layout: "radio"
+      },
+      validation: (R: any) => R.required()
+    },
+
+    /* =========================
+       IMAGES
+    ========================= */
+
     {
       name: "images",
       title: "Images",
@@ -17,7 +46,7 @@ export default {
       of: [{ type: "image", options: { hotspot: true } }]
     },
 
-    // 👇 KEEP (for backward compatibility)
+    // 👇 KEEP (legacy support, optional)
     {
       name: "image",
       title: "Primary Image (legacy)",
@@ -25,7 +54,10 @@ export default {
       options: { hotspot: true }
     },
 
-    // 👇 NEW (modal content)
+    /* =========================
+       MODAL CONTENT
+    ========================= */
+
     {
       name: "description",
       title: "Description",
@@ -39,15 +71,22 @@ export default {
       type: "string"
     },
 
+    /* =========================
+       VISIBILITY & ORDER
+    ========================= */
+
     {
       name: "visible",
+      title: "Visible",
       type: "boolean",
       initialValue: true
     },
 
     {
       name: "order",
-      type: "number"
+      title: "Display Order",
+      type: "number",
+      description: "Lower numbers appear first"
     }
   ]
 };
