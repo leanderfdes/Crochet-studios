@@ -1,244 +1,136 @@
-🧵 Crochet Studios
+# 🧶 Riddhi’s Creation — Handcrafted Crochet Studio
 
-✨ A cinematic, content-driven handcrafted crochet brand website
+A calm, premium, content-driven website built for a handcrafted crochet brand.  
+Designed as a **luxury digital lookbook**, not an e-commerce platform.
 
-    This project is a high-end, animation-rich showcase website for a handcrafted crochet brand.
-    It is not an ecommerce platform — the focus is on storytelling, visual calm, and WhatsApp-only conversion.
+This project focuses on **storytelling, visual elegance, smooth animations, and CMS-driven content**.
 
-    Built using Next.js + Sanity CMS + GSAP, following modern industry standards.
+---
 
-✨ Project Goals
+## 🌿 Project Overview
 
-    🎨 Deliver an emotionally immersive, luxury lookbook experience
+**Riddhi’s Creation** is a modern web experience for a handmade crochet studio where:
 
-    🧶 Showcase crochet collections like an artisan gallery
+- ❌ No cart
+- ❌ No payments
+- ❌ No user login
+- ✅ WhatsApp inquiries only
+- ✅ Admin-friendly content management
+- ✅ Animation-rich, emotionally immersive UI
 
-    📸 Display recent orders as social proof
+The goal is to digitally recreate the feel of a **slow, handcrafted artisan studio**.
 
-    💬 Convert visitors only via WhatsApp
+---
 
-    🔐 Allow admin-only content updates without breaking UI or animations
+## 🧱 Tech Stack
 
-    🧱 Keep the UI locked and content fully dynamic
+### 🎨 Frontend (Crochet Studio)
+- **Next.js (App Router)**
+- **TypeScript**
+- **Tailwind CSS v3**
+- **GSAP (ScrollTrigger)** for cinematic scroll animations
+- **Sanity CMS (Headless)**
+- **Vercel** for deployment
 
-🚫 What This Project Is NOT
+### 🧠 CMS (Sanity Studio)
+- Sanity v3
+- Structured schemas
+- Singleton documents for global content
+- Real-time content publishing
 
-    ❌ No payment gateway
+---
 
-    ❌ No cart or checkout
+## 📁 Repository Structure
 
-    ❌ No user login or authentication
-
-    ❌ No pricing logic
-
-    ➡️ This is an artisan brand website, not an ecommerce store.
-
-🏗️ Architecture Overview
-```
-Sanity CMS (Admin)
-   ↓
-Next.js (Static / Server Components)
-   ↓
-Locked React UI
-   ↓
-GSAP Scroll Animations
-   ↓
-WhatsApp Conversion
-```
-
-🧰 Tech Stack
-  🎨 Frontend
-
-    ⚛️ Next.js (App Router)
-
-    ⚛️ React 18
-
-    🟦 TypeScript
-
-    🎨 Tailwind CSS v3
-
-    🎞️ GSAP + ScrollTrigger
-
-  🧠 CMS
-
-    🗂️ Sanity v3 (Headless CMS)
-
-    🧩 Custom schemas
-
-    🔒 Singleton global settings
-
-    🛠️ Admin-safe content editing
-
-  🚀 Deployment (planned)
-
-    ▲ Vercel (frontend)
-
-    ☁️ Sanity Cloud (CMS)
-
-📁 Repository Structure (Monorepo)
-```
 Crocheting/
-├─ crochet-studio/     # Next.js frontend
-└─ sanity/             # Sanity CMS studio
-```
-
-🧵 Frontend Structure (crochet-studio/)
-```
-src/
-├─ app/                # Next.js App Router
-├─ components/         # Locked UI components
-├─ animations/         # GSAP animation helpers
-├─ lib/                # Sanity client & GROQ queries
-├─ types/              # TypeScript models
-└─ utils/              # Helper utilities
-```
-
-🔑 Key Principles
-
-    🔒 UI components never contain hardcoded content
-
-    🧠 All text & images come from Sanity CMS
-
-    🎞️ Animations are content-agnostic
-
-    ⚖️ Server & client components are properly separated
-
-🧠 CMS Structure (sanity/)
-📦 Content Models
-
-   ⚙️ Site Settings (Singleton)
-
-    🏷️ Brand name
-
-    ✍️ Tagline
-
-    💬 WhatsApp number
-
-🧶 Collections
-
-    📂 Category title
-
-    🖼️ Image
-
-    👁️ Visibility toggle
-
-    🔢 Display order
-
-📸 Recent Orders
-
-    🖼️ Image
-
-    📝 Caption
-
-    📍 Location
-
-    🔢 Display order
-
-✅ CMS Guarantees
-
-    🛠️ Admin can update content without touching code
-
-    🔒 Only one Site Settings document exists
-
-    🧱 Content changes never break UI or animations
-
-🔒 Content Safety Model
-| Layer              | Editable         |
-| ------------------ | ---------------- |
-| 🧱 UI / Layout     | ❌ Locked         |
-| 🎞️ Animations     | ❌ Locked         |
-| 🧠 Content         | ✅ CMS-controlled |
-| 💬 WhatsApp Number | ✅ CMS-controlled |
-
-💬 WhatsApp-Only Conversion
-
-```
-📞 WhatsApp number managed via Sanity Site Settings
-
-🚫 No hardcoded phone numbers
-
-🛟 Optional .env fallback for safety
-
-🎯 Clean, distraction-free CTA
-```
-
-🚀 Local Development
-🎨 Frontend
-```
-cd crochet-studio
-npm install
-npm run dev
-```
+│
+├─ crochet-studio/ # Frontend (Next.js)
+│ ├─ src/
+│ │ ├─ app/
+│ │ ├─ components/
+│ │ ├─ lib/
+│ │ ├─ animations/
+│ │ └─ styles/
+│ ├─ public/
+│ ├─ tailwind.config.js
+│ ├─ next.config.ts
+│ └─ package.json
+│
+├─ sanity/ # Sanity CMS
+│ ├─ schemas/
+│ ├─ sanity.config.ts
+│ └─ package.json
+│
+└─ README.md
 
 
-➡️ Runs at: http://localhost:3000
+---
 
-🧠 Sanity CMS
-```
-cd sanity
-npm install
-npm run dev
-```
+## ✨ Key Features
 
+### 🧵 Frontend
+- Full-screen hero with poetic branding
+- CMS-driven **About / Story section**
+- Dynamic **Collections showcase**
+- Product detail modal (no pricing)
+- **Recent Orders** as social proof
+- Floating **WhatsApp CTA**
+- Smooth GSAP scroll animations
+- Fully responsive (mobile-first)
 
-➡️ Runs at: http://localhost:3333
+### 🧠 CMS (Sanity)
+- Global **Site Settings** (singleton)
+- Editable About section
+- Unlimited collections
+- Recent orders / completed work
+- Image uploads with hotspot support
+- Visibility toggles
+- No layout or code breaking from content edits
 
-🔐 Environment Variables
+---
 
-Environment files are not committed.
+## 🗂️ Sanity Content Models
 
-Example:
-```
+### 🔹 Site Settings (Singleton)
+- Brand name
+- Tagline
+- WhatsApp number
+- SEO title & description
+- SEO image
+
+### 🔹 About Section
+- Section title
+- Rich text story
+- Image
+- Single editable document
+
+### 🔹 Collections
+- Title
+- Category (Bags, Clothing, Home Décor, Custom Orders)
+- Image gallery
+- Description
+- Customization note
+- Visibility toggle
+- Display order
+
+### 🔹 Recent Orders
+- Title
+- Caption
+- Image
+- Location (optional)
+- Order date
+- Visibility toggle
+- Optional reference to a collection
+
+---
+
+## 🚀 Environment Variables
+
+Create a `.env.local` file inside `crochet-studio`:
+
+```env
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
-NEXT_PUBLIC_WHATSAPP_FALLBACK=919999999999
-```
-📈 Current Status
-```
-✅ Sanity Studio configured
+NEXT_PUBLIC_SANITY_DATASET=production
+NEXT_PUBLIC_SANITY_API_VERSION=2024-01-01
 
-✅ Singleton Site Settings implemented
-
-✅ CMS-driven Hero section
-
-✅ CMS-driven WhatsApp CTA
-
-✅ Proper server/client component split
-
-⏳ Collections animations (in progress)
-
-⏳ Recent orders timeline (in progress)
-```
-🎯 Future Enhancements
-```
-🎞️ GSAP stagger animations for collections
-
-🖼️ Product detail modal with gallery
-
-💬 Floating WhatsApp CTA
-
-⚡ Image optimization with next/image
-
-🔍 SEO metadata from CMS
-
-🚀 Production deployment on Vercel
-
-🧠 Learning & Architecture Focus
-```
-This project demonstrates:
-```
-🧱 Real-world Next.js App Router architecture
-
-⚖️ Proper server vs client component separation
-
-🧠 CMS-driven design systems
-
-🔐 Admin-safe content scaling
-
-🧹 Production-ready Git practices
-```
-👤 Author
-```
-Leander
-💻 Frontend / Full-Stack Developer
-🎯 Focused on modern React, Next.js, and content-driven systems
-```
+NEXT_PUBLIC_WHATSAPP_FALLBACK=91XXXXXXXXXX
