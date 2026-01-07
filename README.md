@@ -42,7 +42,7 @@ The goal is to digitally recreate the feel of a **slow, handcrafted artisan stud
 
 ## 📁 Repository Structure
 
-Crocheting/
+``` Crocheting/
 │
 ├─ crochet-studio/ # Frontend (Next.js)
 │ ├─ src/
@@ -61,7 +61,8 @@ Crocheting/
 │ ├─ sanity.config.ts
 │ └─ package.json
 │
-└─ README.md
+└─ README.md */
+```
 
 
 ---
